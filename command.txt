@@ -11,3 +11,29 @@ docker run --rm --name=devframe-tomcat devframe-tomcat
 docker run -p 80:80 --rm --name=devframe-apache --link="devframe-tomcat:devframe-tomcat" devframe-apache
  - /devframe-docker/apache/conf/workers.properties
    worker.worker1.host=devframe-tomcat
+
+docker pull redis
+
+docker run --name=devframe-redis -d -p 6379:6379 redis
+
+docker run -it --link devframe-redis:redis --rm redis redis-cli -h redis -p 6379
+
+OR
+
+docker exec -it 4e37e9a952f9 bash
+root@4e37e9a952f9:/data# redis-cli -h localhost -p 6379
+localhost:6379> keys *
+localhost:6379> exit
+
+
+
+docker build -t devframe-web .
+
+docker run --name=devframe-web --rm -d -p 7070:8080 devframe-web
+
+
+
+
+
+
+
