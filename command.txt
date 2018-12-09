@@ -1,0 +1,13 @@
+docker build -t devframe-apache .
+
+docker build -t devframe-tomcat .
+
+docker run -p 8009:8009 --rm --name=devframe-tomcat devframe-tomcat
+docker run -p 80:80 --rm --name=devframe-apache devframe-apache
+ - /devframe-docker/apache/conf/workers.properties
+   worker.worker1.host=192.168.99.100
+
+docker run --rm --name=devframe-tomcat devframe-tomcat
+docker run -p 80:80 --rm --name=devframe-apache --link="devframe-tomcat:devframe-tomcat" devframe-apache
+ - /devframe-docker/apache/conf/workers.properties
+   worker.worker1.host=devframe-tomcat
