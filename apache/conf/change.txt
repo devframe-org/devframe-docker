@@ -15,4 +15,4 @@ ServerName www.devframe.org:80
 
 *. /devframe-docker/apache/conf/workers.properties
 
-½Å±Ô Ãß°¡
+ì‹ ê·œ ì¶”ê°€
