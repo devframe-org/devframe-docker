@@ -41,6 +41,12 @@ docker ps -a
 
 
 
+
+
+반드시 tomcat pod 를 먼저 띄운 후 apache pod 를 띄운다.
+ - apache 와 tocmat 은 서로 연동되어 있는데 apache pod 가 구동될 때 먼저 8009 포트와 바인딩된 외부 호스트 포트를 찾는다.
+
+
 docker build -t devframe-web-tomcat
 docker tag devframe-web-tomcat devframe/devframe-web-tomcat
 docker push devframe/devframe-web-tomcat
